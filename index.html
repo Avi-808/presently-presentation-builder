@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#11141c" />
+  <title>Presently — Make your next idea clear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="toolbar">
+      <a class="brand" href="#" aria-label="Presently home"><span class="brand-icon">P</span><span>presently</span></a>
+      <div class="deck-name"><span class="save-dot"></span><span id="deckName">The Future of Clean Energy</span><button id="renameDeck" class="quiet-icon" aria-label="Rename presentation" title="Rename">✎</button></div>
+      <div class="toolbar-actions"><button id="themeButton" class="toolbar-button"><span>◐</span> Theme</button><button id="presentButton" class="toolbar-button"><span>⛶</span> Present</button><button id="exportButton" class="toolbar-button export-button"><span>↓</span> Export PDF</button></div>
+    </header>
+
+    <aside class="slide-rail" aria-label="Slides">
+      <div class="rail-heading"><span>SLIDES</span><button id="addSlide" class="add-slide" title="Add slide" aria-label="Add slide">+</button></div>
+      <div id="slideList" class="slide-list"></div>
+      <div class="rail-bottom"><span class="keyboard-hint">TIP</span><span>Use ← → to navigate</span></div>
+    </aside>
+
+    <main class="editor">
+      <div class="editor-header"><div><div class="eyebrow">SLIDE <span id="currentNumber">01</span> <i>/</i> <span id="slideTotal">03</span></div><h1 id="editorTitle">Edit your story</h1></div><div class="editor-nav"><button id="prevSlide" class="nav-arrow" aria-label="Previous slide">←</button><button id="nextSlide" class="nav-arrow" aria-label="Next slide">→</button></div></div>
+      <section class="field-group"><label for="slideTitle">Slide title</label><input id="slideTitle" maxlength="90" placeholder="Give this slide a clear title" /></section>
+      <section class="field-group"><label for="slideSubtitle">Subtitle <span>OPTIONAL</span></label><input id="slideSubtitle" maxlength="140" placeholder="Add a short supporting line" /></section>
+      <section class="field-group body-group"><div class="label-row"><label for="slideBody">Key points</label><span id="charCount">0 / 600</span></div><textarea id="slideBody" maxlength="600" placeholder="Write one idea per line. Keep it clear and concise."></textarea><div class="field-help">One thought per line works best on a slide.</div></section>
+      <div class="editor-footer"><button id="deleteSlide" class="delete-button">⌫ <span>Delete slide</span></button><span class="auto-save"><span class="save-check">✓</span> Saved on this device</span></div>
+    </main>
+
+    <section class="stage" aria-label="Slide preview">
+      <div class="stage-top"><div class="stage-label"><span class="live-dot"></span> LIVE PREVIEW</div><div class="stage-tools"><button id="zoomOut" class="zoom-button" aria-label="Zoom out">−</button><span id="zoomLabel">Fit</span><button id="zoomIn" class="zoom-button" aria-label="Zoom in">+</button><span class="tool-divider"></span><button id="fullscreen" class="fullscreen-button" aria-label="Full screen preview" title="Full screen">⛶</button></div></div>
+      <div id="stageViewport" class="stage-viewport">
+        <article id="slideCanvas" class="slide-canvas theme-aurora" aria-live="polite">
+          <div class="canvas-kicker"><span class="canvas-mark">P</span><span id="canvasDeckName">THE FUTURE OF CLEAN ENERGY</span></div>
+          <div class="canvas-content"><p id="canvasEyebrow" class="canvas-eyebrow">A BETTER WAY FORWARD</p><h2 id="canvasTitle"></h2><p id="canvasSubtitle" class="canvas-subtitle"></p><div id="canvasBody" class="canvas-body"></div></div>
+          <div class="canvas-footer"><span>IDEAS INTO ACTION</span><span id="canvasPage">01</span></div>
+          <div class="canvas-art art-one"></div><div class="canvas-art art-two"></div>
+        </article>
+      </div>
+      <div class="stage-bottom"><div id="themeSwatches" class="theme-swatches" aria-label="Choose a theme"><span class="swatch-label">THEME</span><button class="swatch active" data-theme="aurora" aria-label="Aurora theme" title="Aurora"></button><button class="swatch" data-theme="paper" aria-label="Paper theme" title="Paper"></button><button class="swatch" data-theme="midnight" aria-label="Midnight theme" title="Midnight"></button><button class="swatch" data-theme="citrus" aria-label="Citrus theme" title="Citrus"></button></div><span class="stage-hint">Changes appear as you type</span></div>
+    </section>
+  </div>
+  <div id="presenter" class="presenter" aria-hidden="true"><button id="closePresenter" class="close-presenter" aria-label="Exit presentation">×</button><button id="presentPrev" class="present-arrow" aria-label="Previous slide">‹</button><article id="presentCanvas" class="slide-canvas theme-aurora"></article><button id="presentNext" class="present-arrow" aria-label="Next slide">›</button><div class="present-counter"><span id="presentCount">1 / 3</span><span>Use arrow keys to present</span></div></div>
+  <dialog id="themeDialog" class="theme-dialog"><div class="dialog-head"><div><span class="eyebrow">MAKE IT YOURS</span><h2>Choose a look</h2></div><button id="closeTheme" class="quiet-icon" aria-label="Close themes">×</button></div><p>Pick a style that fits your story. You can change it any time.</p><div class="theme-options"><button data-theme="aurora"><i class="preview-aurora"></i><span>Aurora</span></button><button data-theme="paper"><i class="preview-paper"></i><span>Paper</span></button><button data-theme="midnight"><i class="preview-midnight"></i><span>Midnight</span></button><button data-theme="citrus"><i class="preview-citrus"></i><span>Citrus</span></button></div></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
